@@ -75,17 +75,18 @@ You should see your Flask web application running, where you can start building 
 This project is a web application built using Flask, designed to allow users to upload and view their photos. The main features of this application include:
 
 * **User-Friendly Interface:** Simple and intuitive interface for uploading and browsing images.
-* Photo Upload: Users can easily upload photos to the application.
-* Image Gallery: Displays uploaded images in a gallery format for easy viewing.
-* Database Integration: Utilizes SQLAlchemy for managing image metadata and storage paths.
-* Secure Access: Implements user authentication using Flask-Login and encryption with Flask-Bcrypt to ensure secure access to personal photo albums.
+* **Photo Upload:** Users can easily upload photos to the application.
+* **Image Gallery:** Displays uploaded images in a gallery format for easy viewing.
+* **Database Integration:** Utilizes SQLAlchemy for managing image metadata and storage paths.
+* **Secure Access:** Implements user authentication using Flask-Login and encryption with Flask-Bcrypt to ensure secure access to personal photo albums.
+* 
 The project is structured to provide a clean and organized codebase, facilitating easy maintenance and scalability. This application serves as a great starting point for anyone looking to build more complex image management systems or simply as a personal photo album.
 
 ### Key Technologies Used:
-* Flask: Web framework for building the application.
-* SQLAlchemy: ORM for database interactions.
-* Flask-Migrate: For handling database migrations.
-* Flask-Login: For managing user authentication.
-* Flask-Bcrypt: For encrypting user passwords.
-* Flask-WTF: For form handling and validation.
+* **Flask:** Web framework for building the application.
+* **SQLAlchemy:** ORM for database interactions.
+* **Flask-Migrate:** For handling database migrations.
+* **Flask-Login:** For managing user authentication.
+* **Flask-Bcrypt:** For encrypting user passwords.
+* **Flask-WTF:** For form handling and validation.
 
