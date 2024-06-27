@@ -108,3 +108,4 @@ dmypy.json
 
 # Flask migrations
 migrations/*
+!migrations/.gitkeep
