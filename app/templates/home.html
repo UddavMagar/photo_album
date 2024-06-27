@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+{% block style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
+
+{% block content %}
+<h1>Images</h1>
+<div class="image-grid">
+    {% for image in images %}
+        <div class="image-item">
+            
+            <a href="{{ url_for('main.view_image', image_id=image.id) }}">
+                <img src="{{ url_for('static', filename='images/' + image.image_url) }}" alt="Image">
+                <div class="username-overlay">{{ image.user.username }}</div>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+

@@ -1,0 +1,127 @@
+.form-submit {
+    width: 50%;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3528a7;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form-submit:hover {
+    background-color: #216288;
+}
+
+
+
+.form-error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.custom-form {
+    padding-top: 30px;
+    padding-left: 30%;
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    color: #f7f1f1;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    color: white;
+}
+
+.form-input::placeholder {
+    color: #ddd;
+}
+
+.form-input:focus {
+    border-color: rgba(255, 255, 255, 0.8);
+    outline: none;
+    box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
+}
+
+h1{
+    text-align: center;
+    padding-top: 20px;
+}
+
+.form-control-file {
+    display: none;
+}
+.custom-file-label {
+    display: block;
+    padding: 10px;
+    font-size: 16px;
+    color: white;
+    background-color: #3528a7;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 60%;
+}
+.custom-file-label:hover {
+    background-color: #216288;
+}
+
+.file-name {
+    margin-top: 10px;
+    font-size: 16px;
+    color:antiquewhite;
+}
+
+.icon-delete {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: red;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.125em;
+    transition: transform 2s;
+}
+
+.icon-delete:hover {
+    animation: rotateBackForth 2s infinite;
+}
+
+@keyframes rotateBackForth {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-30deg);
+    }
+    50% {
+        transform: rotate(30deg);
+    }
+    75% {
+        transform: rotate(-30deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}

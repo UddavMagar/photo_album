@@ -1,0 +1,10 @@
+Flask
+Flask-SQLAlchemy
+flask_bcrypt
+flask_wtf
+flask_login
+flask_migrate
+email-validator
+#pymysql  # For MySQL
+#psycopg2  # For PostgreSQL
+#pymongo  # For MongoDB

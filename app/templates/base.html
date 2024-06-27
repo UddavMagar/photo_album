@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} - MyApp</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% block style %}{% endblock %}
+</head>
+<body>
+    <div class="popup" id="popup">
+        <span id="popup-message"></span>
+    </div>
+
+    <script>
+        function showPopupMessage(message, category) {
+            const popup = document.getElementById('popup');
+            const popupMessage = document.getElementById('popup-message');
+            popupMessage.textContent = message;
+            
+            popup.className = 'popup'; // Reset the class
+            if (category === 'success') {
+                popup.classList.add('popup-success');
+            } else if (category === 'danger') {
+                popup.classList.add('popup-danger');
+            }
+
+            popup.style.display = 'block';
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 10000); // Hide after 10 seconds
+        }
+    </script>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('main.home') }}">Home</a></li>
+            {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('main.upload_image') }}">Upload Image</a></li>
+                <li><a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 512 512">
+                        <path 
+                        fill="currentColor"
+                        d="M399 384.2C376.9 345.8 335.4 320 288 320H224c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z"/></svg>
+                    {{ current_user.username }}</a></li>
+                <li><a href="{{ url_for('main.logout') }}">Logout</a></li>
+            {% else %}
+                <li><a href="{{ url_for('main.login') }}">Login</a></li>
+                <li><a href="{{ url_for('main.register') }}">Register</a></li>
+            {% endif %}
+            <li><div class="search-container">
+                <form method="GET" action="{{ url_for('main.home') }}">
+                  <input type="text" name="search" placeholder="Search.." value="{{ request.args.get('search', '') }}">
+                </form>
+              </div>
+            </li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+
+        {% block content %}{% endblock %}
+
+    </div>
+        <script>
+document.addEventListener('DOMContentLoaded', () => {
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            console.log('Flash messages:', {{ messages | tojson }});
+            let flashMessages = {{ messages | tojson }};
+            flashMessages.forEach(msg => {
+                showPopupMessage(msg[1], msg[0]);
+            });
+        {% endif %}
+    {% endwith %}
+});
+document.addEventListener("DOMContentLoaded", function() {
+    const searchInput = document.getElementById("searchInput");
+    const clearIcon = document.getElementById("clearIcon");
+
+    searchInput.addEventListener("input", function() {
+        if (searchInput.value.length > 0) {
+            clearIcon.style.display = "block";
+        } else {
+            clearIcon.style.display = "none";
+        }
+    });
+
+    clearIcon.addEventListener("click", function() {
+        searchInput.value = "";
+        clearIcon.style.display = "none";
+        searchInput.focus();
+    });
+});
+
+    </script>
+</body>
+</html>

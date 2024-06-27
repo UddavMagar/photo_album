@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Flask App</title>
+    <style>
+    body {
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      min-height: 100vh; 
+      background-color: #3f17f3;
+      background: linear-gradient( #6765F2, #965AF6);
+    }
+
+.container {
+  position: relative;
+  width: 800px;
+  height: 300px;
+  transition: 200ms;
+  align-items: center;
+}
+
+
+#card {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  padding-left: 20px;
+  padding-top: 100px;
+  border-radius: 20px;
+  background: #4C3BCF;
+}
+
+h1{
+ 
+  left: 30px;
+  font-size: x-large;
+  font-weight: bold;
+  color: white;
+}
+h4{
+ left: 30px;
+ font-weight: bold;
+ color: white;
+}
+
+
+.card1 {
+  position: absolute;
+  bottom: 50px;
+  left: 100px;
+  width: 320px;
+  height: 50px;
+  padding: 10px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size:xx-large;
+  font-weight: bold;
+  color: white;
+  backdrop-filter: blur(30px);
+  box-shadow: 0px 0px 30px rgba(227, 228, 237, 0.37);
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <div id="card">
+        <h1>Build Your First Web Application</h1>
+        <div class="card1">
+         Python and Flask
+      </div>  
+        </div>
+    </div>
+  </body>
+  </html>
