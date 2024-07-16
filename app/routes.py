@@ -1,5 +1,5 @@
 import secrets, os
-from flask import Blueprint, abort, render_template, url_for, flash, redirect, request, session
+from flask import Blueprint, abort, render_template, url_for, flash, redirect, request, session, send_from_directory,current_app
 from app import bcrypt
 from app.forms import RegistrationForm, LoginForm, ImageUploadForm
 from app.models import User, Image
@@ -16,6 +16,7 @@ def save_picture(form_picture):
     form_picture.save(picture_path)
     return picture_fn
 
+
 @bp.route("/")
 def index():
     return render_template('index.html')
@@ -30,7 +31,7 @@ def register():
         db.session.commit()
         flash('Your account has been created! You are now able to log in', 'success')
         return redirect(url_for('main.login'))
-    return render_template('register.html', title='Register', form=form)
+    return render_template('register.html', title='Register', form=form, url_name='register')
 
 @bp.route("/login", methods=['GET', 'POST'])
 def login():
@@ -106,9 +107,32 @@ def view_image(image_id):
 def delete_image(image_id):
     image = Image.query.get_or_404(image_id)
     if image.user_id != current_user.id:
-        abort(403)  # Forbidden
+        print('here')
+        abort(403)  
 
+    try:
+        image_path = os.path.join(current_app.root_path, 'static', 'images', image.image_url)
+        if os.path.exists(image_path):
+            os.remove(image_path)
+    except Exception as e:
+        print(e)
+        flash(f'Error deleting image file: {e}', 'danger')
+        return redirect(url_for('main.home'))
+
+    # Delete the image record from the database
     db.session.delete(image)
     db.session.commit()
     flash('Image has been deleted!', 'success')
     return redirect(url_for('main.home'))
+
+
+@bp.route('/download/<filename>')
+def download_file(filename):
+    
+    return send_from_directory(os.path.join(os.getcwd(), 'app/static/images'), filename, as_attachment=True)
+
+@bp.route('/cause_error')
+def cause_error():
+    raise Exception("This is a test exception")
+
+

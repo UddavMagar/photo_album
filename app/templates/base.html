@@ -19,7 +19,7 @@
             const popupMessage = document.getElementById('popup-message');
             popupMessage.textContent = message;
             
-            popup.className = 'popup'; // Reset the class
+            popup.className = 'popup';
             if (category === 'success') {
                 popup.classList.add('popup-success');
             } else if (category === 'danger') {
@@ -29,7 +29,7 @@
             popup.style.display = 'block';
             setTimeout(() => {
                 popup.style.display = 'none';
-            }, 10000); // Hide after 10 seconds
+            }, 10000); 
         }
     </script>
     <nav>
@@ -46,7 +46,7 @@
                 <li><a href="{{ url_for('main.logout') }}">Logout</a></li>
             {% else %}
                 <li><a href="{{ url_for('main.login') }}">Login</a></li>
-                <li><a href="{{ url_for('main.register') }}">Register</a></li>
+                <li><a href="{{ url_for('main.register') }}" class="{% if  url_name == 'register' %}active{% endif %}">Register</a></li>
             {% endif %}
             <li><div class="search-container">
                 <form method="GET" action="{{ url_for('main.home') }}">

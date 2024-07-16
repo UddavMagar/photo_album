@@ -12,7 +12,7 @@ class Config:
     # SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://username:password@localhost/db_name'
 
     # PostgreSQL
-    # SQLALCHEMY_DATABASE_URI = 'postgresql://username:password@localhost/db_name'
+    # SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:postgres@localhost/postgres'
 
     # MongoDB
     # MONGODB_SETTINGS = {

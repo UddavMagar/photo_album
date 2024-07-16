@@ -3,6 +3,7 @@
   <head>
     <title>Flask App</title>
     <style>
+      
     body {
       display: flex; 
       justify-content: center; 
@@ -20,61 +21,100 @@
   align-items: center;
 }
 
+.icon-container {
+    position: relative;
+    display: inline-block;
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    overflow: hidden;
+    align-items: center;
+}
 
-#card {
+.icon-download {
+    color: rgb(252, 249, 251);
+    padding-left: 15%;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 150px;
+    height: 150px;
+    transition: transform 1.6s;
+    position: absolute;
+    align-self: center;
+    z-index: 1;
+    
+}
+
+.icon-download.animated:hover {
+  animation: download-animation 1.6s infinite;
+}
+
+@keyframes download-animation {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+.icon-container::after {
+  content: "";
   position: absolute;
-  inset: 0;
-  z-index: 0;
-  display: flex;
-  padding-left: 20px;
-  padding-top: 100px;
-  border-radius: 20px;
-  background: #4C3BCF;
+  width: 250px;
+  height: 250px;
+  background: #00acee;
+  display: block;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 40%;
+  animation: fill 5s ease-in-out;
+  animation-play-state: paused; /* Initially paused */
 }
 
-h1{
- 
-  left: 30px;
-  font-size: x-large;
-  font-weight: bold;
-  color: white;
-}
-h4{
- left: 30px;
- font-weight: bold;
- color: white;
+.icon-container.filled::after {
+  animation-play-state: running; /* Start animation when .filled class is added */
 }
 
 
-.card1 {
-  position: absolute;
-  bottom: 50px;
-  left: 100px;
-  width: 320px;
-  height: 50px;
-  padding: 10px;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size:xx-large;
-  font-weight: bold;
-  color: white;
-  backdrop-filter: blur(30px);
-  box-shadow: 0px 0px 30px rgba(227, 228, 237, 0.37);
-  border: 1.5px solid rgba(255, 255, 255, 0.18);
+@keyframes fill {
+    0% {
+      top: 250px;
+        transform: translateX(-50%) rotate(0deg);
+    }
+    100% {
+      top: -50px;
+        transform: translateX(-50%) rotate(360deg);
+    }
 }
 
     </style>
   </head>
   <body>
     <div class="container">
-        <div id="card">
-        <h1>Build Your First Web Application</h1>
-        <div class="card1">
-         Python and Flask
-      </div>  
-        </div>
+      <div class="icon-container">
+        <a href="#" id="downloadLink">
+                <svg  viewBox="0 0 580 580" class="icon-download animated"
+                ><path fill="currentcolor"
+                d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+        </a>
     </div>
+    <script>
+
+document.addEventListener('DOMContentLoaded', function() {
+      const iconDownload = document.querySelector('.icon-download');
+      const iconContainer = document.querySelector('.icon-container');
+
+      // Add event listener for click on .icon-download
+      iconDownload.addEventListener('click', function() {
+        // Stop download-animation
+        this.classList.remove('animated');
+        
+        // Start fill animation
+        iconContainer.classList.add('filled');
+      });
+    });
+    </script>
+    
   </body>
   </html>

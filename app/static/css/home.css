@@ -118,3 +118,30 @@
     height: 1em;
     vertical-align: -0.125em;
   }
+
+.icon-download {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    color: rgb(252, 249, 251);
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.125em;
+    transition: transform 2s;
+}
+
+.icon-download:hover {
+    animation: download-animation 0.6s infinite;
+}
+
+@keyframes download-animation {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(5px);
+    }
+}
