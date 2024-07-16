@@ -16,11 +16,6 @@ def save_picture(form_picture):
     form_picture.save(picture_path)
     return picture_fn
 
-
-@bp.route("/")
-def index():
-    return render_template('index.html')
-
 @bp.route("/register", methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
@@ -54,7 +49,7 @@ def logout():
     logout_user()
     return redirect(url_for('main.home'))
 
-@bp.route("/home", methods=["GET", "POST"])
+@bp.route("/", methods=["GET", "POST"])
 def home():
     search = request.args.get('search')
     if search:
