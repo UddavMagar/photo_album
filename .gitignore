@@ -108,3 +108,7 @@ dmypy.json
 
 # Flask migrations
 migrations/*
+
+
+static/images
+static/images/*
